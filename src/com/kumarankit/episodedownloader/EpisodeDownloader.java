@@ -39,6 +39,10 @@ public class EpisodeDownloader {
                 return;
             }
 
+            if(targetURLs.size() == 0) {
+                System.out.println("\n No links found for the given show. Verify if the episode exists.\n");
+                return;
+            }
             while(!download_success) {
                 try {
                     DownloadVideo(targetURLs.get(failCount));
@@ -48,13 +52,7 @@ public class EpisodeDownloader {
             }
         }catch(Exception e)
         {
-            System.out.println("\nError in fetching and downloading file. Verify if the episode exists.");
-
-            System.out.println("Input command arguments incorrect" +
-                    "\n\n Use following format to download an episode when you know the exact episode::\n" +
-                    "EpisodesDownloader \"Modern Family\" s3e12\n\n" +
-                    "To get the latest episode, use the following format::\n" +
-                    "EpisodesDownloader \"Modern Family\" -l\n");
+            System.out.println("\nError in fetching and downloading file.\n");
         }
 
     }
